@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <main>
+       <!-- qui disparait au premier clic -->
+       <h1>Pierre <br>Feuille <br>Ciseaux</h1>
+
+       <!-- qui apparait pendant le choix utilisateur -->
+       <div id="play">
+         <p>Joue !</p>
+         <img id="ciseaux" onclick="leChoix(this)" onclick="lancelejeu()" src="img/ciseaux.png" alt="illustration ciseaux"/>
+         <img id="papier" onclick="leChoix(this)" onclick="lancelejeu()" src="img/feuille.png" alt="illustration papier"/>
+         <img id="pierre" onclick="leChoix(this)" onclick="lancelejeu()" src="img/pierre.png" alt="illustration pierre"/>
+       </div>
+
+       <!-- le dessin du garçon -->
+       <div id="chat">
+         <img id="boy" src="img/boy-happy.png" alt="dessin de garçon">
+         <figure>
+           <img src="img/bubble.png" alt="bulle de BD">
+
+           <figcaption id="askForName">
+           Salut, je suis <em>Bot</em>, et toi, comment tu t'appelles ? <br> <input type="text" name="" placeholder="pseudo" required onchange="switchToWannaPlay()">
+           <input id="btnAskForName" type="submit" name="" value="ok">
+           </figcaption>
+
+           <figcaption id="onJoue"> Ok <span id="lePrenom"></span>, tu veux jouer avec moi ? <br>
+             <button type="button" name="button" onclick="switchToTuJoues()">Oh YEAH ! </button>
+             <button type="button" name="button" onclick="laLoose()">Nope</button> <!-- mettre une alternative -->
+           </figcaption>
+           <figcaption id="botChoix2">
+             <img id="botChoix" src="img/ciseaux.png" alt="" style="max-height:90px;">
+             <p id="phrase"></p>
+           </figcaption>
+         </figure>
+       </div>
+
+       <div id="animation"> <!--le container pour l'animation-->
+         <p>Le match !</p>
+         <img class="anim" src="" alt="Choix utilisateur">
+         <img class="anim" src="" alt="Choix Bot">
+       </div>
+
+     </main>
+
+     <!-- pour mettre les scores  -->
+     <aside>
+       <div id="score">
+         <h3>SCORE</h3>
+         <p><span id=Joueur1></span> <br><span id=userPoint>0</span></p>
+         <p> _ </p>
+         <p> Bot <br><span id="ordiPoint">0 </span></p>
+
+       </div>
+
+  </aside>
+  <script src="js/vendor/modernizr-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+</body>
+
+</html>
