@@ -7,71 +7,101 @@
   <title>Rock Paper Scissor</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   <!-- Place favicon.ico in the root directory -->
   <link rel="stylesheet" href="css/normalize.css">
-
+  <link rel="stylesheet" href="css/main.css">
   <!-- Latest compiled and minified CSS -->
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <link href="bootstrap-social.css" rel="stylesheet" >
- <link rel="stylesheet" href="css/main.css">
 </head>
 
-<header>
-  <h1>Rock Paper Scissor</h1>
-</header>
-<div id="name" class="entername" style="width:100%; ">
-    <div class="enternamea w-25 mx-auto pt-2 pb-2 text-center">
-        <p class="text-center battle">C'est quoi ton nom ?</p>
-        <img src="img/bubble.png" style="width:70%;">
-        <input id="entername" class="inputname " type="name" placeholder=""/>
-        <input id="validatname" class=" validate mt-2" type="button" value="Valider" style="width:50%;"/>
-    </div>
-</div>
+<body>
+        <!-- GAME APP -->
+        <div id="name" class="entername" style="width:100%; ">
+            <div class="enternamea mx-auto pt-2 pb-2 text-center">
+                <p class="text-center battle">C'est quoi ton nom ?</p>
+                <img src="img/bubble.png">
+                <input id="entername" class="inputname " type="name" placeholder=""/>
+                <input id="validatname" class=" validate mt-2" type="button" value="Valider" style="width:50%;"/>
+            </div>
+        </div>
+        <div id="game" class="container col-12 m-0 p-0" style="display: none">
+          <div id="gameOverBox" class="game-over">
+            <h2 id="gameOverHead">Congratulations!</h2>
+            <p id="gameOverMsg">You&rsquo;ve won this game!</p>
+            <div class="btn" onclick="playAgain()">Play Again</div>
+          </div>
 
-<div id="allgame" class="container col-12 m-0 p-0" style="display: none">
-  <div class="score-board">
-   <div id="user-label" class="badge"></div>
-   <div id="computer-label" class="badge">Comp</div>
-   <span id="user-score">0</span>:<span id="computer-score">0</span>
- </div>
- <div class="result">
-   <p>Rock Paper Scissor !</P>
- </div>
- <div class="choices">
-   <div class="choice" id="rock">
-     <img  src="img/pierre.png" alt="rock image">
-   </div>
-   <div class="choice" id="paper">
-     <img id="image" src="img/feuille.png" alt="paper image">
-   </div>
-   <div class="choice" id="scissor">
-     <img src="img/ciseaux.png" alt="Scissor image">
-   </div>
- </div>
- <div class="image">
- <img onclick="win()" id=myImg style="width:20%;">
- <img onclick="lose()" id=myImg style="width:20%;">
- <img onclick="draw()" id=myImg style="width:20%;">
- <img onclick="getComputerChoice()" id="myImg">
-</div>
+          <h1 class="game--title">Rock Paper Scissors</h1>
 
- <p id="action-message">Make your move.</p>
-  <script src="js/vendor/modernizr-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
+          <div class="player">
+            <div id="user-label" class="badge"></div>
+            <div class="move">
+              <p id="playerMove"><i class="fa fa-question"></i></p>
+            </div>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+            <div class="score-box">
+              <div class="playerPt score-box--pt"></div>
+              <div class="playerPt score-box--pt"></div>
+              <div class="playerPt score-box--pt"></div>
+            </div>
+
+          </div>
+
+          <div class="computer">
+            <div id="computer-label" class="badge">Comp</div>
+            <div class="move">
+              <p id="computerMove"><i class="fa fa-question"></i></p>
+            </div>
+
+            <div class="score-box">
+              <div class="computerPt score-box--pt"></div>
+              <div class="computerPt score-box--pt"></div>
+              <div class="computerPt score-box--pt"></div>
+            </div>
+
+          </div>
+
+          <div class="game--report">
+            <h3 id="playByPlay">Choose a move.</h3>
+          </div>
+
+          <div class="game--report">
+            <h3 id="turnScore">Good luck!</h3>
+          </div>
+
+          <div class="game--moves">
+            <div onclick="getPlayerMove('rock')" class="game--moves_btn btn">
+              <i class='fa fa-hand-rock-o'></i>
+            </div>
+            <div onclick="getPlayerMove('paper')" class="game--moves_btn btn">
+              <i class='fa fa-hand-paper-o'></i>
+            </div>
+            <div onclick="getPlayerMove('scissors')" class="game--moves_btn btn">
+              <i class='fa fa-hand-scissors-o'></i>
+            </div>
+          </div>
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="js/vendor/modernizr-3.6.0.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+      <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <script>
+      window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+      ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
 </body>
 
 </html>
