@@ -1,381 +1,100 @@
-var etapeName = document.getElementById("askForName");
-var etapePlay = document.getElementById("onJoue");
-var etapeJoue = document.getElementById("play");
-var etapeAnim = document.getElementById("animation");
-var etapeScor = document.getElementById("score");
-var botChoix2 = document.getElementById("botChoix2");
-var userChoice;
-var phraseEgal = document.getElementById('phrase');
-var matchUser = document.getElementsByClassName('anim')[0];
-var matchOrdi = document.getElementsByClassName('anim')[1];
-
-etapePlay.style.visibility = "hidden";
-etapeJoue.style.visibility = "hidden";
-etapeAnim.style.visibility = "hidden";
-etapeScor.style.visibility = "hidden";
-botChoix2.style.visibility = "hidden";
-
-document.getElementById("btnAskForName").addEventListener("click", switchToWannaPlay);
-
-
-function switchToWannaPlay() {
-  prenom = document.getElementsByTagName("input")[0].value;
-  document.getElementById("lePrenom").innerHTML = prenom;
-  document.getElementById("Joueur1").innerHTML = prenom;
-  etapePlay.style.visibility = "visible";
-  etapeName.style.visibility = "hidden";
-}
-
-function laLoose() {
-    boy.setAttribute('src', "./img/boy-angry.png");
-    etapePlay.style.visibility = "hidden";
-    phraseEgal.style.visibility ="visible";
-    phraseEgal.innerHTML = "Va voir ailleurs si j'y suis !";
-    phraseEgal.style.marginTop ="-70px";
-    phraseEgal.style.fontSize = "30px";
-
-}
-
-function switchToTuJoues() {
-  etapePlay.style.visibility = "hidden";
-  etapeJoue.style.visibility = "visible";
-  bubbleVisible = document.getElementsByTagName("figure")[0];
-  h1Visible = document.getElementsByTagName("h1")[0];
-  bubbleVisible.style.visibility = "hidden";
-  h1Visible.style.visibility = "hidden";
-  etapeScor.style.visibility = "visible";
-  etapeAnim.style.visibility = "hidden";
-  botChoix2.style.visibility = "hidden";
-
-}
-
-function myMessageWin() {
-  phraseEgal.style.visibility = "visible";
-  phraseEgal.innerHTML = "GG, tu gagnes!";
-}
-
-function myMessageLoose() {
-  phraseEgal.style.visibility = "visible";
-  phraseEgal.innerHTML = "t'as PERDUUU!";
-}
-
-
-function supp() {
-  phraseEgal.style.visibility = "hidden";
-}
-
-var userPoint = 0 , ordiPoint = 0;
-
-
-function leChoix(th) {
-  var userChoice;
-  userChoice = th.id;
-
-
-    var allOpt = ["pierre", "papier", "ciseaux"];
-
-    ordiChoice = allOpt[Math.floor(Math.random() * allOpt.length)];
-
-    bubbleVisible.style.visibility = "visible";
-    botChoix2.style.visibility = "visible";
-
-        switch (userChoice) {
-
-            case "pierre":
-
-              if (ordiChoice == "ciseaux") {
-                var pos = 0;
-                botChoix.setAttribute('src', "./img/ciseaux.png");
-                phraseEgal.style.visibility = "hidden";
-                etapeAnim.style.visibility = "visible";
-                etapeJoue.style.visibility = "hidden";
-                matchOrdi.setAttribute('src', "./img/ciseaux.png");
-                matchUser.setAttribute('src', "./img/pierre.png");
-                myMove();
-
-                // algo sur la petite anim'
-                function myMove() {
-                  var test = setInterval(frame, 1);
-                  function frame() {
-                    if (pos == 170) {
-                      clearInterval(test);
-                    } else {
-                      pos++;
-                      matchUser.style.top = pos + 'px';
-                      matchOrdi.style.bottom = pos + 'px';
-                    }
-                  }
-                }
-
-                //suite de l'anim
-                setTimeout(myMessageWin, 1500);
-
-                setTimeout(mettrelepoint, 2000);
-                function mettrelepoint() {
-                  userPoint++;
-                }
-
-                setTimeout(switchToTuJoues, 3000);
-
-                setTimeout(supp, 3000);
-
-              } else if (ordiChoice == "papier") {
-                var pos = 0;
-                botChoix.setAttribute('src', "./img/feuille.png");
-                phraseEgal.style.visibility = "hidden";
-                etapeAnim.style.visibility = "visible";
-                etapeJoue.style.visibility = "hidden";
-                matchOrdi.setAttribute('src', "./img/feuille.png");
-                matchUser.setAttribute('src', "./img/pierre.png");
-                myMove();
-
-                // algo sur la petite anim'
-                function myMove() {
-                  var test = setInterval(frame, 1);
-                  function frame() {
-                    if (pos == 170) {
-                      clearInterval(test);
-                    } else {
-                      pos++;
-                      matchUser.style.top = pos + 'px';
-                      matchOrdi.style.bottom = pos + 'px';
-                    }
-                  }
-                }
-
-                //suite de l'anim
-                setTimeout(myMessageLoose, 1500);
-
-
-                setTimeout(mettrelepoint, 2000);
-                function mettrelepoint() {
-                  ordiPoint++;
-                }
-
-                setTimeout(switchToTuJoues, 3000);
-
-                setTimeout(supp, 3000);
-
-              } else {
-                botChoix.setAttribute('src', "./img/pierre.png");
-                phraseEgal.style.visibility = "visible";
-                phraseEgal.innerHTML = "Egalité. \n Allez on recommence ! ";
-              }
-            break;
-
-            case "papier":
-
-              if (ordiChoice == "pierre") {
-                var pos = 0;
-                botChoix.setAttribute('src', "./img/pierre.png");
-                etapeAnim.style.visibility = "visible";
-                etapeJoue.style.visibility = "hidden";
-                phraseEgal.style.visibility = "hidden";
-                matchOrdi.setAttribute('src', "./img/pierre.png");
-                matchUser.setAttribute('src', "./img/feuille.png");
-                myMove();
-
-                // algo sur la petite anim'
-                function myMove() {
-                  var test = setInterval(frame, 1);
-                  function frame() {
-                    if (pos == 170) {
-                      clearInterval(test);
-                    } else {
-                      pos++;
-                      matchUser.style.top = pos + 'px';
-                      matchOrdi.style.bottom = pos + 'px';
-                    }
-                  }
-                }
-
-                //suite de l'anim
-                setTimeout(myMessageWin, 1500);
-
-                setTimeout(mettrelepoint, 2000);
-                function mettrelepoint() {
-                  userPoint++;
-                }
-
-
-                setTimeout(switchToTuJoues, 3000);
-
-                setTimeout(supp, 3000);
-
-              } else if (ordiChoice == "ciseaux") {
-                var pos = 0;
-                botChoix.setAttribute('src', "./img/ciseaux.png");
-                etapeAnim.style.visibility = "visible";
-                etapeJoue.style.visibility = "hidden";
-                phraseEgal.style.visibility = "hidden";
-                matchOrdi.setAttribute('src', "./img/ciseaux.png");
-                matchUser.setAttribute('src', "./img/feuille.png");
-                myMove();
-
-                // algo sur la petite anim'
-                function myMove() {
-                  var test = setInterval(frame, 1);
-                  function frame() {
-                    if (pos == 170) {
-                      clearInterval(test);
-                    } else {
-                      pos++;
-                      matchUser.style.top = pos + 'px';
-                      matchOrdi.style.bottom = pos + 'px';
-                    }
-                  }
-                }
-
-                //suite de l'anim
-                setTimeout(myMessageLoose, 1500);
-
-                setTimeout(mettrelepoint, 2000);
-                function mettrelepoint() {
-                  ordiPoint++;
-                }
-
-                setTimeout(switchToTuJoues, 3000);
-
-                setTimeout(supp, 3000);
-
-              } else {
-                botChoix.setAttribute('src', "./img/feuille.png");
-                phraseEgal.style.visibility = "visible";
-                phraseEgal.innerHTML = "Egalité! \n Allez on recommence ! ";
-                setTimeout(supp, 2000);
-              }
-            break;
-
-            case "ciseaux":
-
-              if (ordiChoice == "papier") {
-                var pos = 0;
-                botChoix.setAttribute('src', "./img/feuille.png");
-                etapeAnim.style.visibility = "visible";
-                etapeJoue.style.visibility = "hidden";
-                phraseEgal.style.visibility = "hidden";
-                matchOrdi.setAttribute('src', "./img/feuille.png");
-                matchUser.setAttribute('src', "./img/ciseaux.png");
-                myMove();
-
-                // algo sur la petite anim'
-                function myMove() {
-                  var test = setInterval(frame, 1);
-                  function frame() {
-                    if (pos == 170) {
-                      clearInterval(test);
-                    } else {
-                      pos++;
-                      matchUser.style.top = pos + 'px';
-                      matchOrdi.style.bottom = pos + 'px';
-                    }
-                  }
-                }
-
-                //suite de l'anim
-                setTimeout(myMessageWin, 1500);
-
-                setTimeout(mettrelepoint, 2000);
-                function mettrelepoint() {
-                  userPoint++;
-                }
-
-                setTimeout(switchToTuJoues, 3000);
-
-                setTimeout(supp, 3000);
-
-              } else if (ordiChoice == "pierre") {
-                var pos = 0;
-                botChoix.setAttribute('src', "./img/pierre.png");
-                etapeAnim.style.visibility = "visible";
-                etapeJoue.style.visibility = "hidden";
-                phraseEgal.style.visibility = "hidden";
-                matchOrdi.setAttribute('src', "./img/pierre.png");
-                matchUser.setAttribute('src', "./img/ciseaux.png");
-                myMove();
-
-                // algo sur la petite anim'
-                function myMove() {
-                  var test = setInterval(frame, 1);
-                  function frame() {
-                    if (pos == 170) {
-                      clearInterval(test);
-                    } else {
-                      pos++;
-                      matchUser.style.top = pos + 'px';
-                      matchOrdi.style.bottom = pos + 'px';
-                    }
-                  }
-                }
-
-                //suite de l'anim
-                setTimeout(myMessageLoose, 1500);
-
-                setTimeout(mettrelepoint, 2000);
-                function mettrelepoint() {
-                  ordiPoint++;
-                }
-
-                setTimeout(switchToTuJoues, 3000);
-
-                setTimeout(supp, 3000);
-
-              } else {
-                botChoix.setAttribute('src', "./img/ciseaux.png");
-                phraseEgal.style.visibility = "visible";
-                phraseEgal.innerHTML = "Egalité! \n Allez on recommence ! ";
-                setTimeout(supp, 2000);
-              }
-
-            break;
-
-        }
-
-        document.getElementById("userPoint").innerHTML = userPoint;
-        document.getElementById("ordiPoint").innerHTML = ordiPoint;
-
-
-
-    setTimeout(winorfail, 3000);
-
-    function winorfail() {
-      if (ordiPoint === 3) {
-      botChoix2.style.visibility = "hidden";
-      phraseEgal.style.visibility = "visible";
-      bubbleVisible.style.visibility = "visible";
-      phraseEgal.innerHTML = "T'as perdu contre un robot, la défaite ! ";
-      phraseEgal.style.marginTop = "-70px";
-      phraseEgal.style.fontSize = "25px";
-      setTimeout(fail, 1000);
-        function fail() {
-          ordiPoint = 0;
-          userPoint = 0;
-
-          phraseEgal.innerHTML = "Allez, on rejoue !";
-          phraseEgal.style.marginTop = "0px";
-          phraseEgal.style.fontSize = "18px";
-        }
+var userScore = 0;
+var computerScore = 0;
+var userScore_span = document.getElementById("user-score");
+var computerScore_span = document.getElementById("computer-score");
+var scoreBoard_div = document.querySelector(".score-board");
+var result_p = document.querySelector(".result > p");
+var rock_div = document.getElementById("rock");
+var paper_div = document.getElementById("paper");
+var scissor_div = document.getElementById("scissor");
+
+ document.getElementById("validatname").onclick = function() {name()};
+ function name(){
+   var name = document.getElementById("entername").value;
+   if(name.length >= 2) {
+      document.getElementById("name").style.display="none";
+      document.getElementById("user-label").innerHTML = name;
+      document.getElementById("allgame").style.display="inline-block";
     }
-
-      if (userPoint === 3) {
-        phraseEgal.style.visibility = "visible";
-        botChoix2.style.visibility = "hidden";
-        phraseEgal.innerHTML = "Bravo, t'as gagné mon gars ! ";
-        bubbleVisible.style.visibility = "visible";
-        phraseEgal.style.marginTop = "-70px";
-        phraseEgal.style.fontSize = "25px";
-          setTimeout(win, 2000);
-          function win() {
-            ordiPoint = 0;
-            userPoint = 0;
-            phraseEgal.innerHTML = "Allez, on rejoue !";
-            phraseEgal.style.marginTop = "0px";
-            phraseEgal.style.fontSize = "18px";
-          }
-      }
-    document.getElementById("userPoint").innerHTML = userPoint;
-    document.getElementById("ordiPoint").innerHTML = ordiPoint;
-    }
+  }
 
 
+function getComputerChoice(){
+  var choices = ["rock", "paper","scissor"];
+  var randomNumber = Math.floor(Math.random() * 3);
+  return choices[randomNumber];
+
+}
+
+
+function win(userChoice, computerChoice){
+  userScore++;
+  userScore_span.innerHTML = userScore;
+  computerScore_span.innerHTML = computerScore;
+  var smallUserWord = "user".fontsize(3).sup();
+  var smallComputerWord = "computer".fontsize(3).sup();
+  result_p.innerHTML = userChoice + smallUserWord + " " +  "beats" + " " +  computerChoice  + smallComputerWord + " " + ".You win!";
+  document.getElementById(userChoice).classList.add("green-glow");
+  document.getElementById("myImg").src = "img/body2.gif";
+}
+
+function lose(userChoice, computerChoice){
+  computerScore++;
+  userScore_span.innerHTML = userScore;
+  computerScore_span.innerHTML = computerScore;
+  var smallUserWord = "user".fontsize(3).sup();
+  var smallComputerWord = "computer".fontsize(3).sup();
+  result_p.innerHTML = userChoice + smallUserWord + " " +  "loses to" + " " +  computerChoice  + smallComputerWord + " " + ".You lost!";
+  document.getElementById("myImg").src = "img/body3.gif";
+}
+
+function draw(userChoice, computerChoice){
+  userScore_span.innerHTML = userScore;
+  computerScore_span.innerHTML = computerScore;
+  var smallUserWord = "user".fontsize(3).sup();
+  var smallComputerWord = "computer".fontsize(3).sup();
+  result_p.innerHTML = userChoice + smallUserWord + " " +  "equals" + " " +  computerChoice  + smallComputerWord + " " + ".It is a draw!";
+  document.getElementById("myImg").src = "img/body4.gif";
+}
+
+function main() {
+  rock_div.addEventListener("click", function(){
+    play("rock");
+  })
+
+  paper_div.addEventListener("click", function(){
+    play("paper");
+  })
+
+  scissor_div.addEventListener("click", function(){
+    play("scissor");
+  })
+}
+
+main();
+
+function play(userChoice){
+  var computerChoice = getComputerChoice();
+  switch(userChoice + computerChoice) {
+  case "rockscissor":
+  case "paperrock":
+  case "scissorpaper":
+  win(userChoice, computerChoice);
+  break;
+  case "rockpaper":
+  case "paperrock":
+  case "scissorrock":
+  lose(userChoice, computerChoice);
+  break;
+  case "rockrock":
+  case "paperpaper":
+  case "scissorscissor":
+  draw(userChoice, computerChoice);
+  break;
+  }
+  if(userScore== 3){
+    alert("j'ai gagne");
+  }if(computerScore === 3){
+    alert("vous avez perdu");
+  }
 }
