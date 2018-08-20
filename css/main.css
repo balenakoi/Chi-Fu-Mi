@@ -1,0 +1,528 @@
+/*! HTML5 Boilerplate v6.1.0 | MIT License | https://html5boilerplate.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+   */
+   #game h1,
+   #game h2,
+   #game h3,
+   #game h4,
+   #game h5,
+   #game h6,
+   #game p {
+     margin: 0;
+     padding: 0;
+     font-family: sans-serif;
+     letter-spacing: 0;
+   }
+   .battle{
+     position: relative;
+     top: 58px;
+   }
+   .text-center{
+     width: 25%;
+   }
+
+   #entername{
+     position: relative;
+     bottom: 121px;
+     width: 49%;
+   }
+
+   #name{
+     background-color: rgba(224,224,224,1);
+     height: 100vh;
+   }
+   .enternamea img {
+     width:25%;
+   }
+   #game h1 {
+     font-size: 32px;
+     text-align: center;
+   }
+   #game h2 {
+     font-size: 24px;
+   }
+   #game h3 {
+     font-size: 18px;}
+   #game h4 {font-size: 14px;
+   }
+
+   #game {
+     background-color: rgba(224,224,224,1);
+     font-family: sans-serif;
+     max-width: 1500px;
+     min-width: 320px;
+     min-height: 600px;
+     position: relative; /* Provides reference point for .game-over box */
+     margin: 18px auto;
+     padding: 12px;
+     color: rgba(48,48,48,1);
+     box-shadow: 10px 10px 12px -4px rgba(0,0,0,0.5);
+     border: 4px solid rgba(48,48,48,1);
+     border-radius: 5px;
+   }
+
+   .game-over {
+     position: absolute;
+     left: 10%;
+     top: 240px;
+     width: 80%;
+     height: 135px;
+     padding: 12px;
+     text-align: center;
+     background-color: lightgreen;
+     border: 4px solid darkgreen;
+     border-radius: 5px;
+     box-shadow: 8px 8px 8px -2px rgba(0,0,0,0.5);
+     display: none;
+   }
+
+   .game-over>p {
+     font-weight: bold;
+     margin-bottom: 8px;
+   }
+
+   #game .btn {
+     text-align: center;
+     background-color: rgb(240, 240, 240);
+     color: rgb(64,64,64);
+     border: 3px solid rgb(64,64,64);
+     border-radius: 8px;
+     box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+   }
+
+   #game .btn:hover,
+   #game .btn:active {
+     background-color: rgb(255,255,255);
+     cursor: pointer;
+   }
+
+   #game .btn:active {
+     position: relative;
+     left: 2px;
+     top: 2px;
+     box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+   }
+
+   #game .game-over .btn {
+     width: 100px;
+     height: 40px;
+     padding: 8px;
+     margin: 0 auto;
+     font-size: 14px;
+     font-weight: bold;
+   }
+
+   #game--title {
+     padding: 3px 0;
+     margin: 0;
+     text-align: center;
+   }
+
+
+   .player,
+   .computer{
+     width: 49%;
+     padding: 12px;
+     margin-bottom: 12px;
+     text-align: center;
+   }
+
+   .player {
+     float: left;
+   }
+
+   .computer {
+     float: right;
+   }
+
+   .game--report {
+     width: 100%;
+     text-align: center;
+     padding-bottom: 3px;
+     clear: both;
+   }
+
+   .game--moves {
+     width: 100%;
+     min-height: 45px;
+     padding: 12px;
+     text-align: center;
+   }
+
+   #game .game--moves_btn {
+     width: 50px;
+     height: 50px;
+     font-size: 24px;
+     margin: 0 6px;
+     padding: 9px;
+     background-color: cornflowerblue;
+     color: white;
+     display: inline-block;
+   }
+
+   #game .game--moves_btn:hover,
+   #game .game--moves_btn:active {
+     background-color: lightsteelblue;
+   }
+
+   .move {
+     width: 75px;
+     height: 75px;
+     margin: 12px auto;
+     border: 1px solid rgba(0,0,0,0.6);
+     border-radius: 3px;
+     box-shadow: -2px -2px 12px 0px rgba(0,0,0,0.6) inset,
+                 2px 2px 2px -1px rgba(0,0,0,0.5);
+   }
+
+   .player .move {
+     background-color: royalblue;
+   }
+
+   .computer .move {
+     background-color: orange;
+   }
+
+   .move>p {
+     margin: 0 auto;
+     font-size: 48px;
+     font-weight: bold;
+     color: white;
+   }
+
+   .score-box {
+     width: 118px;
+     height: 40px;
+     margin: 0 auto;
+   }
+
+   .score-box--pt {
+     width: 32px;
+     height: 32px;
+     float: left;
+     margin: 6px 3px;
+     background-color: #ccc;
+     border-radius: 50%;
+     border: 1px solid rgba(0,0,0,0.67);
+     box-shadow: -3px -3px 12px 0px rgba(0,0,0,0.6) inset,
+                 2px 2px 2px -1px rgba(0,0,0,0.5);
+   }
+
+
+   @media screen and (min-width: 320px) {
+
+     .enternamea img{
+       width: 100%;
+       height: 200px;
+     }
+     .battle{
+       position: relative;
+       top: 58px;
+     }
+
+     #entername{
+       position: relative;
+       bottom:0px;
+       width: 100%;
+     }
+     .text-center{
+       width: 100%;
+     }
+     #game{
+       min-height: 475px;
+     }
+     #game>h1 {
+        font-size: 24px;
+      }
+
+     #game .game-over>h2 {
+       font-size: 19px;
+     }
+
+     .game-over {
+       top: 265px;
+     }
+
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap; /* 1 */
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+    white-space: inherit;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster */
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
