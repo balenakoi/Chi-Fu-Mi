@@ -111,7 +111,7 @@ textarea {
    }
    .battle{
      position: relative;
-     top: 58px;
+     top: 124px;
    }
    .text-center{
      width: 25%;
@@ -130,7 +130,7 @@ textarea {
    .enternamea img {
      width:25%;
    }
-   #game h1 {
+   #game h2 {
      font-size: 32px;
      text-align: center;
    }
